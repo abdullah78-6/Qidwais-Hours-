@@ -1,0 +1,18 @@
+@import "tailwindcss";
+.background {
+    background-color: #5C766D;
+
+}
+body{
+    background-color: #EDE9E6;
+}
+.span{
+    color: #C9996B;
+}
+.btn{
+    background-color:#5C4F4A ;
+}
+.btn:hover{
+    background-color:#C9996B ;
+    color:#5C4F4A;
+}
