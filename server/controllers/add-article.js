@@ -23,4 +23,38 @@ const Add=async(req,res)=>{
     }
 
 }
-export {Add}
+const Getarticle=async(req,res)=>{
+    try {
+        const products=await articlemodel.find({});
+        res.json({status:true,ans:products});
+        console.log(products);
+        
+    } catch (error) {
+        console.log(error);
+        res.json({status:false,message:"GET ITEM ERROR "});
+        
+    }
+
+}
+const deletearticle=async(req,res)=>{
+    try {
+            const fproduct=await articlemodel.findById(req.body.id);
+          if(!fproduct){
+        return  res.json({status:false,message:"Article NOT FOUND"});
+    
+            }
+            
+            
+            await articlemodel.findByIdAndDelete(req.body.id);
+             res.json({status:true,message:"DATA DELETED SUCESSFULLY "});
+            
+        } catch (error) {
+            console.log("delete error",error);
+             res.json({status:false,message:"DATA DELETE ERROR"});
+            
+        }
+    
+    }
+
+
+export {Add,Getarticle,deletearticle}

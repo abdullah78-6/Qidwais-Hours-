@@ -1,0 +1,109 @@
+import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
+import validator from "validator"
+import adminmodel from "../models/admin-authmodel.js";
+const createtoken=(id)=>{
+    return jwt.sign({id},process.env.JWT_SECRET_ADMIN);
+
+}
+const adminregister=async(req,res)=>{
+    const {name,email,password}=req.body;
+    
+
+    try {
+        const exist=await adminmodel.findOne({email});
+        if(exist){
+            return res.json({status:false,message:"USER IS ALREADY EXIST "});
+        }
+        if(!validator.isEmail(email)){
+            return res.json({status:false,message:"PLEASE ENTER A VALID EMAIL "});
+        }
+        if(password.length<8){
+            return res.json({status:false,message:"PLEASE ENTER A STRONG PASSWORD "});
+        }
+        const salt=await bcrypt.genSalt(10);
+        const hashedpassword=await bcrypt.hash(password,salt);
+        const newuser=new adminmodel({
+            name:name,
+            email:email,
+            password:hashedpassword
+        })
+        const user=await newuser.save();
+        const token=createtoken(user._id);
+        return res.json({status:true,token,message:"USER REGISTER SUCCESSFULLY"});
+
+
+        
+    } catch (error) {
+        console.log(error);
+        return res.json({status:false,message:"SIGN-UP ERROR"});
+        
+    }
+}
+
+const adminlogin=async(req,res)=>{
+    const {email,password}=req.body;
+    try {
+        const user=await adminmodel.findOne({email});
+        if(!user){
+            return res.json({status:false,message:"USER DOES NOT EXIST "});
+        }
+        const ismatch=await bcrypt.compare(password,user.password);
+        if(!ismatch){
+            return res.json({status:false,message:"PASSWORD IS INCORRECT"});
+        }
+        const token=createtoken(user._id);
+        res.cookie("token",token,{
+            httpOnly:true,
+            secure:true,
+            sameSite:"none",//strict for localserver
+            maxAge:24*60*60*1000
+        })
+        return res.json({status:true,email:email,message:"LOGIN SUCCESSFULLY"});
+        
+    } catch (error) {
+        console.log("ERROR");
+        return res.json({status:false,message:"LOGIN ERROR"});
+        
+    }
+    
+
+}
+const Logout=async(req,res)=>{
+    try {
+        res.clearCookie("token",{
+        httpOnly:true,
+        // secure: process.env.NODE_ENV === "production",
+        secure:true,
+        sameSite:"none", //strict for localserver
+        
+    });
+    return res.json({status:true,message:"Logged Out "})
+        
+    } catch (error) {
+        console.log("logout ",error);
+        res.json({status:false,message:"Logout error"});
+        
+    }
+}
+const getProfile=async(req,res)=>{
+    try {
+        const token=req.cookies.token;
+        if(!token){
+            return res.json({status:false});
+        }
+        const decoded=jwt.verify(token,process.env.JWT_SECRET_ADMIN);
+        const user=await adminmodel.findById(decoded.id).select("email");
+        if(!user){
+            return res.json({status:false});
+        }
+        res.json({status:true,email:user.email})
+    } catch (error) {
+        res.json({status:false});
+    }
+
+}
+
+
+
+export {adminregister,adminlogin,getProfile,Logout}

@@ -10,14 +10,14 @@ function App() {
 const url="http://localhost:9000";
 const loginstatus=useSelector(state=>state.main.loginstatus);
     return <div>
-        <Navbar/>
-        {loginstatus?<Loginpopup/>:<></>}
+        <Navbar url={url}/>
+        {loginstatus?<Loginpopup url={url}/>:<></>}
         <div className="flex">
         <Sidebar/>
         <Routes>
             <Route path="/" element={<Dashboard/>}></Route>
             <Route path="/add" element={<Add url={url}/>}></Route>
-            <Route path="/total" element={<Total/>}></Route>
+            <Route path="/total" element={<Total url={url}/>}></Route>
         </Routes>
         
         </div>

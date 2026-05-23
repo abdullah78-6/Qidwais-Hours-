@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import "dotenv/config"
 import { databaseconnection } from "./config/db.js";
 import addrouter from "./routes/add-routes.js";
+import adminrouter from "./routes/adminauth-route.js";
 databaseconnection();
 const app=express();
 app.use(cors({
@@ -11,8 +12,9 @@ app.use(cors({
     credentials:true
 }));
 app.use(express.json());
-app.use("/api/admin",addrouter);
 app.use(cookieParser());
+app.use("/api/admin",addrouter);
+app.use("/api/auth",adminrouter);
 app.get("/",(req,res)=>{
     res.send("SERVER IS WORKING ");
 
