@@ -16,10 +16,10 @@ const Add=({url})=>{
     const Add=async(e)=>{
         const newurl=url+"/api/admin/add";
         e.preventDefault();
-        // if(!backendemail){
-        //     toast.error("ADMIN LOGIN REQUIRED");
-        //     return ;
-        // }
+        if(!backendemail){
+            toast.error("ADMIN LOGIN REQUIRED");
+            return ;
+        }
         const response=await axios.post(newurl,articleinfo,{
             withCredentials:true
         });
@@ -34,30 +34,77 @@ const Add=({url})=>{
         
         
     }
-    return <div className="flex justify-center items-center">
-        <form onSubmit={Add} className=" bg-[#5C766D] w-[90%] max-w-md rounded-3xl p-8 shadow-2xl flex  flex-col justify-center items-center gap-6  font-semibold mt-30  ">
-              <div className="flex justify-between items-center w-full">
-                            
-                            </div>
-                            <div className="flex flex-col gap-2 w-full">
-            
-                            <label className="text-[#EDE9E6] text-2xl capitalize" htmlFor="title">enter-title</label>
-                            <input onChange={onchangehandler} value={articleinfo.title} className="bg-[#EDE9E6] text-[#5C4F4A] px-4 py-3 rounded-xl outline-none border-2 border-transparent focus:border-[#C9996B] transition duration-200" type="text"placeholder="enter-title" name="title" required/>
-                            </div>
-            
-                            <div className="flex flex-col gap-2 w-full">
-            
-                            <label className="text-[#EDE9E6]" htmlFor="password">write-article</label>
-                            <textarea onChange={onchangehandler} value={articleinfo.content} className="bg-[#EDE9E6] text-[#5C4F4A] px-4 py-3 rounded-xl outline-none border-2 border-transparent focus:border-[#C9996B] transition duration-200" placeholder="enter article content"name="content" >
+    return (
+        <div className="flex-1 min-h-screen bg-[#F4F1EA] flex justify-center items-center px-6 py-10">
 
-                            </textarea>
-                            </div>
-                            <div>
-                                <button className="bg-red-700 p-2 hover:bg-red-900  transition ease-in-out duration-150 text-white rounded-2xl text-xl capitalize">add article</button>
-                            </div>
-        </form>
+            <form
+                onSubmit={Add}
+                className="w-full max-w-3xl bg-[#E7DDD1] rounded-3xl shadow-2xl border border-[#CBB8A9] p-10 flex flex-col gap-8"
+            >
 
-    </div>
+        
+                <div className="text-center">
+                    <h1 className="text-4xl font-bold text-[#5C766D] capitalize">
+                        add new article
+                    </h1>
+
+                    <p className="text-[#5C4F4A] mt-2 text-lg">
+                        Write and publish your article easily
+                    </p>
+                </div>
+
+        
+                <div className="flex flex-col gap-3">
+                    <label
+                        className="text-[#5C4F4A] text-2xl font-semibold capitalize"
+                        htmlFor="title"
+                    >
+                        article title
+                    </label>
+
+                    <input
+                        onChange={onchangehandler}
+                        value={articleinfo.title}
+                        type="text"
+                        placeholder="Enter article title..."
+                        name="title"
+                        required
+                        className="bg-[#F8F5F0] text-[#5C4F4A] px-5 py-4 rounded-2xl outline-none border-2 border-transparent focus:border-[#C9996B] text-lg transition duration-200"
+                    />
+                </div>
+
+        
+                <div className="flex flex-col gap-3">
+                    <label
+                        className="text-[#5C4F4A] text-2xl font-semibold capitalize"
+                        htmlFor="content"
+                    >
+                        article content
+                    </label>
+
+                    <textarea
+                        onChange={onchangehandler}
+                        value={articleinfo.content}
+                        placeholder="Write your article here..."
+                        name="content"
+                        required
+                        className="bg-[#F8F5F0] text-[#5C4F4A] px-5 py-4 rounded-2xl outline-none border-2 border-transparent focus:border-[#C9996B] text-lg transition duration-200 h-[350px] resize-none"
+                    />
+                </div>
+
+        
+                <div className="flex justify-center mt-2">
+                    <button
+                        type="submit"
+                        className="bg-[#5C766D] hover:bg-[#4B635B] text-white px-10 py-4 rounded-2xl text-xl font-semibold capitalize shadow-lg transition duration-200"
+                    >
+                        add article
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    );
 
 }
 export default Add;

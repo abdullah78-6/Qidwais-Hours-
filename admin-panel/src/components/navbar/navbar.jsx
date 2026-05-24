@@ -15,7 +15,7 @@ const Navbar=({url})=>{
                 })
                 if(res.data.status){
                     dispatch(control.setbackendemail(res.data.email));
-                    
+                    dispatch(control.setbackendarticles([]));
                 }
                 else{
                     dispatch(control.setbackendemail(""));
