@@ -1,5 +1,12 @@
+import Display from "./components/display-article/display"
+import Footer from "./components/footer/footer";
+
 function App() {
-    return <h1 className="bg-blue-700 p-4 text-center text-3xl text-white">ARTICLE-WRITTING-PLATFORM </h1>
+    const url="http://localhost:9000";
+    return <div>
+        <Display url={url}/>
+        <Footer url={url}/>
+    </div>
 }
 
 export default App
