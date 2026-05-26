@@ -22,8 +22,41 @@ const Subscribe=async(req,res)=>{
             const info=await transporter.sendMail({
                 from:process.env.USER,
                 to:email,
-                subject:"Subscription Successfull",
-                text:"Thank you for subscribing to our article notifications. "
+                subject:" 🎉 Subscription Successfull",
+                html:`
+                <div style="font-family: Arial, sans-serif; background:#f4f4f4; padding:40px;">
+                    <div style="max-width:600px; margin:auto; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+                        
+                        <div style="background:#2563eb; color:white; padding:20px; text-align:center;">
+                            <h1>Welcome 🎉</h1>
+                        </div>
+
+                        <div style="padding:30px; color:#333;">
+                            <h2>Thanks for subscribing!</h2>
+
+                            <p>
+                                You will now receive notifications whenever a new article is published.
+                            </p>
+
+                            <p>
+                                Stay tuned for amazing content 🚀
+                            </p>
+
+                            <div style="margin-top:30px; text-align:center;">
+                                <a href="#" 
+                                   style="background:#2563eb; color:white; padding:12px 20px; text-decoration:none; border-radius:5px;">
+                                   Visit Website
+                                </a>
+                            </div>
+                        </div>
+
+                        <div style="background:#f1f1f1; padding:15px; text-align:center; font-size:12px; color:#666;">
+                            © 2026 Article Hub. All rights reserved.
+                        </div>
+                    </div>
+                </div>
+
+                `
             });
             console.log("preivew url ",nodemailer.getTestMessageUrl(info));
             res.json({status:true,message:"Subscribed successfully"});
@@ -54,8 +87,37 @@ const Add=async(req,res)=>{
             await transporter.sendMail({
                 from:process.env.USER,
                 bcc:emails,
-                subject:`New Article ${title}`,
-                text:`A new article has been published the title of the article is ${title}`
+                subject:` 📰 New Article ${title}`,
+                html:`
+                <div style="font-family: Arial, sans-serif; background:#f4f4f4; padding:40px;">
+                        <div style="max-width:650px; margin:auto; background:white; border-radius:10px; overflow:hidden; box-shadow:0 2px 10px rgba(0,0,0,0.1);">
+                            
+                            <div style="background:#111827; color:white; padding:25px; text-align:center;">
+                                <h1>New Article Published 🚀</h1>
+                            </div>
+
+                            <div style="padding:30px; color:#333;">
+                                <h2 style="color:#2563eb;">${title}</h2>
+
+                                <p style="line-height:1.8;">
+                                    ${content.substring(0, 200)}...
+                                </p>
+
+                                <div style="margin-top:30px; text-align:center;">
+                                    <a href="http://localhost:3000"
+                                       style="background:#2563eb; color:white; padding:14px 24px; text-decoration:none; border-radius:6px; font-weight:bold;">
+                                       Read Full Article
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div style="background:#f1f1f1; padding:15px; text-align:center; font-size:12px; color:#666;">
+                                You're receiving this email because you subscribed to Article Hub.
+                            </div>
+                        </div>
+                    </div>
+
+                `
             })
         }
         
