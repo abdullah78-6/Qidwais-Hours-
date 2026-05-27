@@ -6,6 +6,7 @@ import { databaseconnection } from "./config/db.js";
 import addrouter from "./routes/add-routes.js";
 import adminrouter from "./routes/adminauth-route.js";
 import userauthrouter from "./routes/user-auth-routes.js";
+import Likerouter from "./routes/like-route.js";
 databaseconnection();
 const app=express();
 app.use(cors({
@@ -20,6 +21,7 @@ app.use(cookieParser());
 app.use("/api/admin",addrouter);
 app.use("/api/auth",adminrouter);
 app.use("/api/user",userauthrouter);
+app.use("/api/res",Likerouter);
 app.get("/",(req,res)=>{
     res.send("SERVER IS WORKING ");
 

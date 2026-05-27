@@ -14,7 +14,12 @@ const articleslice=createSlice({
             password:""
         },
         
-        logintype:"login"
+        logintype:"login",
+        likes:null,
+        article:"",
+        id:"",
+        userlikestatus:false,
+
 
     },
     reducers:{
@@ -38,6 +43,18 @@ const articleslice=createSlice({
         },
         setlogintype(state,action){
             state.logintype=action.payload;
+        },
+        setarticle(state,action){
+            state.article=action.payload;
+        },
+        setlikes(state,action){
+            state.likes=action.payload;
+        },
+        setid(state,action){
+            state.id=action.payload;
+        },
+        setuserlikestatus(state,action){
+            state.userlikestatus=action.payload;
         }
 
     }

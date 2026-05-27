@@ -26,7 +26,8 @@ const adminregister=async(req,res)=>{
         const newuser=new usermodel({
             name:name,
             email:email,
-            password:hashedpassword
+            password:hashedpassword,
+            
         })
         const user=await newuser.save();
         const token=createtoken(user._id);
@@ -59,7 +60,7 @@ const adminlogin=async(req,res)=>{
             sameSite:"none",//strict for localserver
             maxAge:24*60*60*1000
         })
-        return res.json({status:true,email:email,message:"LOGIN SUCCESSFULLY"});
+        return res.json({status:true,email:email,message:"LOGIN SUCCESSFULLY",likedarticles:user.likedarticles});
         
     } catch (error) {
         console.log("ERROR");

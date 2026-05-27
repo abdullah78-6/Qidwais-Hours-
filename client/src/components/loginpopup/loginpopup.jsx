@@ -3,7 +3,6 @@ import { ImCross } from "react-icons/im";
 import { useSelector,useDispatch } from "react-redux";
 import { control } from "../../redux/slice";
 import axios from "axios"
-
 const Login=({url})=>{
 const dispatch=useDispatch();
     const logininfo=useSelector(state=>state.main.logininfo);
@@ -40,8 +39,14 @@ const dispatch=useDispatch();
         const response=await axios.post(newurl,logininfo,{
             withCredentials:true
         });
+
     if(response.data.status){
+        dispatch(control.setuserlikestatus(response.data.likestatus));
           if(logintype==="login"){
+            const currentarticleid=localStorage.getItem("articleid");
+            const likedarticles=response.data.likedarticles||[];
+            const liked=likedarticles.includes(currentarticleid);
+            dispatch(control.setuserlikestatus(liked));
              const res=await axios.get(url+"/api/user/pr",{
             withCredentials:true,
         })

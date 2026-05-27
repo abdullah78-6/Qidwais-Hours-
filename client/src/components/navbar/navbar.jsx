@@ -41,6 +41,7 @@ const logout=async()=>{
         });
         if(response.data.status){
             dispatch(control.setbackendemail(""));
+            dispatch(control.setuserlikestatus(false));
             
         toast.success(response.data.message);
 

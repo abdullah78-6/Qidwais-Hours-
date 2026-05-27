@@ -5,13 +5,39 @@ import App from './App.jsx'
 import {Toaster} from "react-hot-toast";
 import {Provider} from "react-redux"
 import ClientStore from './redux/store.js'
-import { BrowserRouter } from 'react-router-dom'
+import {RouterProvider,createBrowserRouter} from "react-router-dom"
+import Detail from './pages/details/details.jsx';
+import Display from './components/display-article/display.jsx';
+const url="http://localhost:9000";
+const router=createBrowserRouter([
+  
+  {
+    path:"/",
+    element:<App />,
+    children:[
+      {
+        index:true,
+        element:(
+          <>
+          <Display url={url} />
+          </>
+        )
+      },
+      {
+        path:"/det",
+        element:<Detail url={url}/>
+      }
+    ]
+  }
+])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={ClientStore}>
-    <BrowserRouter>
-    <App />
-    </BrowserRouter>
+  <RouterProvider router={router}>
+
+  </RouterProvider>
+    
+
     <Toaster/>
     </Provider>
   </StrictMode>,
