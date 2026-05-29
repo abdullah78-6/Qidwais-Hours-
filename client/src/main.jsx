@@ -8,6 +8,7 @@ import ClientStore from './redux/store.js'
 import {RouterProvider,createBrowserRouter} from "react-router-dom"
 import Detail from './pages/details/details.jsx';
 import Display from './components/display-article/display.jsx';
+import Hero from './components/hero/hero.jsx';
 const url="http://localhost:9000";
 const router=createBrowserRouter([
   
@@ -19,6 +20,7 @@ const router=createBrowserRouter([
         index:true,
         element:(
           <>
+          <Hero/>
           <Display url={url} />
           </>
         )
