@@ -53,10 +53,15 @@ const Navbar=({url})=>{
 
     }
     return <div className="flex justify-between py-3 px-3 capitalize font-semibold background">
-        <Link to="/" className="text-2xl capitalize text-white ">qidwai-<span className="span">hour</span></Link>
-        <div className="flex justify-center items-center gap-4">
+        <Link to="/" className="text-sm md:text-2xl lg:text-2xl xl:text-2xl capitalize text-white ">qidwai-<span className="span">hour</span></Link>
+        <ul className="text-sm  flex justify-center items-center gap-4 xl:hidden md:hidden lg:hidden text-[#C9996B] font-semibold cursor-pointer">
+            <Link className="hover:underline" to="/">Dashboard</Link>
+            <Link className="hover:underline" to="/total">total articles</Link>
+            <Link className="hover:underline" to="/add">add articles</Link>
+        </ul>
+        <div className="flex justify-center items-center gap-4 flex-wrap">
             <div>
-         {!backendemail?<button onClick={activateloginpopup} className="span btn p-2 capitalize rounded-2xl transition duration-150 ease-in-out">login</button>:<button className="bg-[#C9996B] p-3 rounded-3xl capitalize font-semibold text-[#5C766D] hover:bg-pink-700 hover:text-[#EDE9E6] transition ease-in-out duration-150" onClick={logout}>logout</button>}
+         {!backendemail?<button onClick={activateloginpopup} className="span btn p-0 md:p-2 xl:p-2 lg:p-2 capitalize rounded-2xl transition duration-150 ease-in-out">login</button>:<button className="bg-[#C9996B] p-0 md:p-2 xl:p-2 lg:p-2 rounded-3xl capitalize font-semibold text-[#5C766D] hover:bg-pink-700 hover:text-[#EDE9E6] transition ease-in-out duration-150" onClick={logout}>logout</button>}
             </div>
             <div className="text-[#5C766D] flex items-center justify-between ">
              {backendemail?<h1 className="uppercase rounded-4xl  p-3  text-center  text-sm bg-[#EDE9E6] hover:bg-[#C9996B] hover:text-[#EDE9E6] transition ease-in-out duration-150">{backendemail.slice(0,1)}</h1>:<></>}

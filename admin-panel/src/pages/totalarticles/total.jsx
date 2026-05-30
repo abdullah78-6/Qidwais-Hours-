@@ -55,7 +55,7 @@ const Total=({url})=>{
     <div className="w-full bg-[#E7DDD1] shadow-2xl rounded-3xl p-6 border border-[#CBB8A9]">
       
       
-      <ul className="grid grid-cols-4 text-center capitalize font-bold text-2xl text-[#5C766D] pb-4 border-b-2 border-[#B7A89A]">
+      <ul className="grid grid-cols-4 text-center capitalize font-bold text-sm md:text-2xl lg:text-2xl xl:text-2xl text-[#5C766D] pb-4 border-b-2 border-[#B7A89A]">
         <li>serial no</li>
         <li>title</li>
         <li>likes</li>
@@ -83,13 +83,13 @@ const Total=({url})=>{
             >
               <h1>{index + 1}</h1>
 
-              <h1 className="break-words px-3">
+              <h1 className="break-words px-0 md:px-3 lg:px-3 xl:px-3 text-sm">
                 {i.title}
               </h1>
 
               <h1>{i.likes}</h1>
 
-              <div className="flex justify-center">
+              <div className="flex justify-center flex-wrap">
                 <button
                   onClick={() => Delete(i._id)}
                   className="bg-red-700 px-5 py-2 text-white rounded-xl hover:bg-red-900 transition duration-150"

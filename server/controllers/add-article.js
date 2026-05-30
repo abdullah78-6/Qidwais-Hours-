@@ -3,6 +3,7 @@ import validator from "validator"
 import nodemailer from "nodemailer"
 import transporter from "../config/transporter.js";
 import subscribemodel from "../models/subscriber-model.js";
+import usermodel from "../models/user-authmodel.js";
 const Subscribe=async(req,res)=>{
     const {email}=req.body;
     try {
@@ -164,6 +165,21 @@ const deletearticle=async(req,res)=>{
         }
     
     }
+    const Dashboard=async(req,res)=>{
+        try {
+            const totalsubscriber=await subscribemodel.find({}).countDocuments();
+            const totalregester=await usermodel.find({}).countDocuments();
+            const totalarticles=await articlemodel.find({}).countDocuments();
+            res.json({status:true,articles:totalarticles,regester:totalregester,subscriber:totalsubscriber});
+            
+        } catch (error) {
+            console.log("dashboard error ",error);
+            res.json({status:false,message:"dashboard error"});
+            
+        }
+        
+
+    }
 
 
-export {Add,Getarticle,deletearticle,Subscribe}
+export {Add,Getarticle,deletearticle,Subscribe,Dashboard}

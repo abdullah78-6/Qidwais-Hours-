@@ -12,6 +12,9 @@ const articleslice=createSlice({
 
         },
         backendarticles:[],
+        totalregestred:0,
+        totalsubscribers:0,
+        totalnoarticles:0
 
     },
     reducers:{
@@ -33,7 +36,17 @@ const articleslice=createSlice({
         },
         setbackendarticles(state,action){
             state.backendarticles=action.payload;
+        },
+        settotalnoarticles(state,action){
+            state.totalnoarticles=action.payload;
+        },
+        settotalregestred(state,action){
+            state.totalregestred=action.payload;
+        },
+        settotalsubscribers(state,action){
+            state.totalsubscribers=action.payload;
         }
+
 
     }
 

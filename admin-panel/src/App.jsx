@@ -15,7 +15,7 @@ const loginstatus=useSelector(state=>state.main.loginstatus);
         <div className="flex">
         <Sidebar/>
         <Routes>
-            <Route path="/" element={<Dashboard/>}></Route>
+            <Route path="/" element={<Dashboard url={url}/>}></Route>
             <Route path="/add" element={<Add url={url}/>}></Route>
             <Route path="/total" element={<Total url={url}/>}></Route>
         </Routes>

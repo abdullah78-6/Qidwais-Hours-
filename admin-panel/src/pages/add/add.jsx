@@ -35,11 +35,11 @@ const Add=({url})=>{
         
     }
     return (
-        <div className="flex-1 min-h-screen bg-[#F4F1EA] flex justify-center items-center px-6 py-10">
+        <div className="flex-1 min-h-screen bg-[#F4F1EA] flex justify-center items-center px-6 py-10 ">
 
             <form
                 onSubmit={Add}
-                className="w-full max-w-3xl bg-[#E7DDD1] rounded-3xl shadow-2xl border border-[#CBB8A9] p-10 flex flex-col gap-8"
+                className="w-65 md:w-full lg:w-full xl:w-full max-w-3xl bg-[#E7DDD1] rounded-3xl shadow-2xl border border-[#CBB8A9] p-10 flex flex-col gap-8"
             >
 
         
