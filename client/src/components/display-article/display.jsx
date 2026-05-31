@@ -36,13 +36,15 @@ const Display=({url})=>{
 
 
     }
-    return <div>
-        <h1>article display</h1>
-        <div>
+    return <div className="mt-20 font-semibold">
+        <h1 className="text-center text-3xl capitalize text-[#5C4F4A]">articles list </h1>
+        <div className="flex justify-center items-center flex-wrap gap-15 px-2 py-2 ">
             {backendarticles.map((i,index)=>{
-                return <div className="text-xl capitalize font-semibold mt-3 ml-4 bg-amber-500 w-40 flex justify-center items-center flex-col" key={index} >
-                    <h1>{i.title}</h1>
-                    <button onClick={()=>Setter(i.likes,i.article,i._id)}  className="bg-red-500 rounded-3xl text-xl p-2 capitalize">details</button>
+                return <div className="text-xl text-[#EDE9E6] capitalize font-semibold mt-3 ml-4 bg-[#5C766D] rounded-3xl p-2  flex justify-center items-center flex-row flex-wrap hover:scale-120 transition ease-in-out duration-300 h-30 w-100" key={index} >
+                    <div className="flex justify-center items-center  flex-wrap">
+                    <h1 className="text-[#EDE9E6] text-center">{i.title}</h1>
+                    <button onClick={()=>Setter(i.likes,i.article,i._id)}  className="bg-red-500 hover:bg-red-800 transition ease-in-out duration-150 rounded-3xl text-xl p-2 capitalize w-90 mt-5 text-center">details</button>
+                    </div>
                 </div>
             })}
         </div>

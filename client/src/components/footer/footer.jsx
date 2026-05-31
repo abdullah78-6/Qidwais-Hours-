@@ -28,7 +28,7 @@ const Footer=({url})=>{
         }
         
     }
-    return <div className="font-semibold ">
+    return <div className="font-semibold  ">
         <div className="text-gray-800 font-semibold  px-3 py-6 bg-mist-300 mt-10 flex flex-col flex-wrap  " id="f">
         <div className="flex justify-center md:justify-between lg:justify-between xl:justify-between  items-center     flex-wrap">
         <div className=" text-center mt-2 ">

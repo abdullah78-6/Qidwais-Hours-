@@ -4,6 +4,7 @@ import toast from "react-hot-toast"
 import {useSelector,useDispatch} from "react-redux"
 import { control } from "../../redux/slice";
 import {Line,CartesianGrid,XAxis,YAxis,LineChart,ResponsiveContainer,BarChart,Bar, Legend,Pie,PieChart,Tooltip,Cell} from "recharts"
+import SlotCounter from 'react-slot-counter';
 const Dashboard=({url})=>{
     const dispatch=useDispatch();
     const totalsubscriber=useSelector(state=>state.main.totalsubscribers);
@@ -56,7 +57,6 @@ const Dashboard=({url})=>{
 
    return (
     <div className="min-h-screen bg-slate-100 p-4 md:p-8 w-full text-[#C9996B] font-semibold">
-
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-[#5C766D]">
           Dashboard Overview
@@ -72,8 +72,10 @@ const Dashboard=({url})=>{
           <h3 className="text-slate-500 text-sm font-medium">
             Total Articles
           </h3>
+          
           <p className="text-4xl font-bold mt-3">
-            {totalnoarticles}
+          <SlotCounter value={totalnoarticles}/>
+          
           </p>
         </div>
 
@@ -82,7 +84,8 @@ const Dashboard=({url})=>{
             Registered Users
           </h3>
           <p className="text-4xl font-bold mt-3">
-            {totalregestred}
+            <SlotCounter value={totalregestred}/>
+            
           </p>
         </div>
 
@@ -91,7 +94,8 @@ const Dashboard=({url})=>{
             Subscribers
           </h3>
           <p className="text-4xl font-bold mt-3">
-            {totalsubscriber}
+            <SlotCounter value={totalsubscriber}/>
+            
           </p>
         </div>
       </div>

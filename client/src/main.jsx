@@ -9,6 +9,7 @@ import {RouterProvider,createBrowserRouter} from "react-router-dom"
 import Detail from './pages/details/details.jsx';
 import Display from './components/display-article/display.jsx';
 import Hero from './components/hero/hero.jsx';
+import Question from './components/questions/question.jsx';
 const url="http://localhost:9000";
 const router=createBrowserRouter([
   
@@ -22,6 +23,7 @@ const router=createBrowserRouter([
           <>
           <Hero/>
           <Display url={url} />
+          <Question/>
           </>
         )
       },
