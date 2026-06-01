@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector,useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { SlLike } from "react-icons/sl";
@@ -93,43 +94,53 @@ const Detail = ({url}) => {
     }
 
   }
-
-  return (
-    <div className="min-h-screen bg-gray-100 p-6 font-semibold">
-      
+return (
+    <div className="min-h-screen bg-gray-100 p-6">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-8">
-        
-        
         <h1 className="text-4xl font-bold text-center text-[#5C766D] mb-6">
           Article Details
         </h1>
 
-        
-        <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 ">
-          <h2 className="text-2xl font-semibold text-[#C9996B] mb-4">
-            Article
-          </h2>
+        <div className="bg-gray-50 p-6 rounded-lg border border-gray-200">
+          <h2 className="text-2xl font-bold text-[#C9996B] mb-4">Article</h2>
 
-          <p className="text-lg leading-8 text-gray-700 whitespace-pre-line">
-            {article}
-          </p>
+          
+          <div className="prose prose-stone max-w-none text-gray-700 leading-relaxed space-y-4 visual-markdown">
+            <ReactMarkdown
+              components={{
+                h1: ({ node, ...props }) => <h1 className="text-3xl font-extrabold text-gray-900 mt-6 mb-2" {...props} />,
+                h2: ({ node, ...props }) => <h2 className="text-2xl font-bold text-gray-800 mt-5 mb-2" {...props} />,
+                p: ({ node, ...props }) => <p className="text-lg text-gray-700 mb-4 whitespace-pre-wrap" {...props} />,
+              }}
+            >
+              {article}
+            </ReactMarkdown>
+          </div>
         </div>
 
-        
         <div className="mt-6 flex items-center justify-between">
           <h3 className="text-xl font-medium text-gray-800">
-             Likes: <span className="text-blue-600">{likes}</span>
+            Likes: <span className="text-blue-600 font-semibold">{likes}</span>
           </h3>
-          
         </div>
+
         <div className="flex justify-start items-center gap-5 mt-4">
-        
-      {userlikestatus?<BiSolidDislike onClick={Dislike} className="text-2xl" />:<SlLike className="text-2xl" onClick={Like} />}
+          {userlikestatus ? (
+            <BiSolidDislike
+              onClick={Dislike}
+              className="text-2xl cursor-pointer text-gray-600 hover:text-gray-800 transition"
+            />
+          ) : (
+            <SlLike
+              className="text-2xl cursor-pointer text-gray-600 hover:text-blue-600 transition"
+              onClick={Like}
+            />
+          )}
+        </div>
       </div>
-      </div>
-      
     </div>
   );
+
 };
 
 export default Detail;

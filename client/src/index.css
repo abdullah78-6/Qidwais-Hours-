@@ -8,6 +8,9 @@ body{
     background-color: #EDE9E6;
     /* background-color: #1F2A28; */
 }
+html{
+    scroll-behavior: smooth;
+}
 .span{
     color: #C9996B;
 }

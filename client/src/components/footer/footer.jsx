@@ -4,6 +4,7 @@ import toast from "react-hot-toast"
 import axios from "axios"
 const Footer=({url})=>{
     const subscriber=useSelector(state=>state.main.subscriber);
+    const backendemail=useSelector(state=>state.main.backendemail);
     const dispatch=useDispatch();
     const Onchangehandler=(event)=>{
         dispatch(control.setsubscriber({
@@ -14,7 +15,12 @@ const Footer=({url})=>{
 
     }
     const Submit=async(e)=>{
-        e.preventDefault();
+         e.preventDefault();
+        if(!backendemail){
+      toast.error("User Login Required");
+      return ;
+       }
+
         const newurl=url+"/api/admin/subs";
         const response=await axios.post(newurl,subscriber,{
             withCredentials:true
@@ -29,7 +35,7 @@ const Footer=({url})=>{
         
     }
     return <div className="font-semibold  ">
-        <div className="text-gray-800 font-semibold  px-3 py-6 bg-mist-300 mt-10 flex flex-col flex-wrap  " id="f">
+        <div className="text-gray-800 font-semibold  px-3 py-6 bg-mist-300 mt-10 flex flex-col flex-wrap  " id="subscribe">
         <div className="flex justify-center md:justify-between lg:justify-between xl:justify-between  items-center     flex-wrap">
         <div className=" text-center mt-2 ">
             <h1 className="text-3xl capitalize text-[#5C766D]">Qidwai-<span className="text-[#C9996B]">hours</span></h1>
@@ -40,7 +46,7 @@ const Footer=({url})=>{
                <h1 className="text-3xl text-[#5C766D] ">current affairs</h1> 
              <p className="text-center">better articles</p>
                <h1>subscribe to get notification on mail </h1>
-        <form onSubmit={Submit} className="flex justify-center items-center gap-3">
+        <form onSubmit={Submit} className="flex justify-center items-center gap-3 flex-wrap">
         <label htmlFor="email" className="text-xl">email</label>
         <input onChange={Onchangehandler} value={subscriber.email} name="email"  className="border-[#5C4F4A] border p-2 rounded-3xl text-xl" type="email"placeholder="enter-email" required/>
         <button className="bg-black text-white p-2 rounded-3xl text-xl capitalize hover:bg-gray-900 transition ease-in-out duration-150  ">subscribe</button>

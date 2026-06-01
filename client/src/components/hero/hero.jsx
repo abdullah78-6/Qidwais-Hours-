@@ -31,13 +31,13 @@ const Hero = () => {
 
         
         <div className="mt-10 flex flex-col sm:flex-row justify-center gap-4">
-          <button className="px-8 py-4 rounded-xl bg-[#C9996B] text-white font-semibold shadow-lg hover:scale-105 transition duration-300">
+          {/* <button className="px-8 py-4 rounded-xl bg-[#C9996B] text-white font-semibold shadow-lg hover:scale-105 transition duration-300">
             Explore Articles
           </button>
 
           <button className="px-8 py-4 rounded-xl border border-[#5C766D]/20 text-[#5C766D] font-semibold hover:bg-white transition duration-300">
             Read Articles
-          </button>
+          </button> */}
         </div>
       </div>
     </section>

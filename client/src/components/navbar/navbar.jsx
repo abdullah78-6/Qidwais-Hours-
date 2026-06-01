@@ -60,9 +60,9 @@ const logout=async()=>{
     return <div className="flex justify-between py-3 px-3 capitalize font-semibold background">
         <Link to="/" className="text-2xl capitalize text-white ">qidwai-<span className="span">hour</span></Link>
         <ul className=" hidden xl:flex xl:justify-center xl:items-center xl:gap-8 xl:font-semibold xl:capitalize xl:text-xl xl:text-[#C9996B] xl:cursor-pointer       lg:flex lg:justify-center lg:items-center lg:gap-8 lg:font-semibold lg:capitalize lg:text-xl lg:text-[#C9996B] lg:cursor-pointer          md:flex md:justify-center md:items-center md:gap-8 md:font-semibold md:capitalize md:text-xl md:text-[#C9996B] md:cursor-pointer ">
-                <li className="hover:underline">home</li>
-                <li className="hover:underline">articles</li>
-                <li className="hover:underline">contact-us</li>
+                <Link to="/" className="hover:underline">home</Link>
+                <a href="#display" className="hover:underline">articles</a>
+                <a href="#subscribe" className="hover:underline">Subscribe</a>
                 
             </ul>
         <div className="flex justify-center items-center gap-4">
@@ -95,17 +95,17 @@ const logout=async()=>{
 
     <ul className="flex flex-col gap-5 text-center text-[#EDE9E6] text-lg font-semibold capitalize">
 
-      <li className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
+      <Link to="/" className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
         home
-      </li>
+      </Link>
 
-      <li className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
+      <a href="#display" className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
         articles
-      </li>
+      </a>
 
-      <li className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
-        contact-us
-      </li>
+      <a href="#subscribe" className="py-3 rounded-2xl hover:bg-[#C9996B] hover:text-[#5C766D] transition duration-300 cursor-pointer">
+        Subscribe
+      </a>
     </ul>
 
     <div className="flex flex-col items-center gap-4 mt-6">
