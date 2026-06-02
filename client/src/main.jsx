@@ -10,7 +10,7 @@ import Detail from './pages/details/details.jsx';
 import Display from './components/display-article/display.jsx';
 import Hero from './components/hero/hero.jsx';
 import Question from './components/questions/question.jsx';
-const url="http://localhost:9000";
+const url="https://qidwais-hours-backend.onrender.com";
 const router=createBrowserRouter([
   
   {
