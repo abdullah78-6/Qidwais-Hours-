@@ -44,7 +44,7 @@ const Subscribe=async(req,res)=>{
                             </p>
 
                             <div style="margin-top:30px; text-align:center;">
-                                <a href="#" 
+                                <a href="https://qidwais-hours-frontend.onrender.com" 
                                    style="background:#2563eb; color:white; padding:12px 20px; text-decoration:none; border-radius:5px;">
                                    Visit Website
                                 </a>
@@ -105,7 +105,7 @@ const Add=async(req,res)=>{
                                 </p>
 
                                 <div style="margin-top:30px; text-align:center;">
-                                    <a href="http://localhost:3000"
+                                    <a href="https://qidwais-hours-frontend.onrender.com"
                                        style="background:#2563eb; color:white; padding:14px 24px; text-decoration:none; border-radius:6px; font-weight:bold;">
                                        Read Full Article
                                     </a>
