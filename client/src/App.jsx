@@ -7,7 +7,7 @@ import Detail from "./pages/details/details";
 import { Outlet } from "react-router-dom";
 function App() {
     const loginstatus=useSelector(state=>state.main.loginstatus);
-    const url="http://localhost:9000";
+    const url="https://qidwais-hours-backend.onrender.com";
     return <div>
         <Navbar url={url}/>
         {loginstatus?<Login url={url}/>:<></>}
