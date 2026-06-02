@@ -7,7 +7,7 @@ import Add from "./pages/add/add";
 import Dashboard from "./pages/dashboard/dashboard";
 import Total from "./pages/totalarticles/total";
 function App() {
-const url="http://localhost:9000";
+const url="https://qidwais-hours-backend.onrender.com";
 const loginstatus=useSelector(state=>state.main.loginstatus);
     return <div>
         <Navbar url={url}/>
