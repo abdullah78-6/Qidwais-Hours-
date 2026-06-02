@@ -11,8 +11,8 @@ databaseconnection();
 const app=express();
 app.use(cors({
     origin:[
-        "http://localhost:5173",
-        "http://localhost:5174"
+        "https://qidwais-hours-frontend.onrender.com",
+        "https://qidwais-hours-admin.onrender.com"
     ],
     credentials:true
 }));
