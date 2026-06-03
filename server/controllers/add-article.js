@@ -87,7 +87,7 @@ const Add=async(req,res)=>{
         if(emails.length>0){
             await transporter.sendMail({
                 from:process.env.USER,
-                bcc:emails,
+                to:emails,
                 subject:` 📰 New Article ${title}`,
                 html:`
                 <div style="font-family: Arial, sans-serif; background:#f4f4f4; padding:40px;">
