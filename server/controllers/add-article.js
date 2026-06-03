@@ -21,7 +21,7 @@ const Subscribe=async(req,res)=>{
             await subscriber.save();
             // nodemailer confirmation email
             const info=await transporter.sendMail({
-                from:process.env.USER,
+                from:process.env.BREVO_USER,
                 to:email,
                 subject:" 🎉 Subscription Successfull",
                 html:`
@@ -86,7 +86,7 @@ const Add=async(req,res)=>{
         const emails=subscribers.map((sub)=>sub.email);
         if(emails.length>0){
             await transporter.sendMail({
-                from:process.env.USER,
+                from:process.env.BREVO_USER,
                 bcc:emails,
                 subject:` 📰 New Article ${title}`,
                 html:`
