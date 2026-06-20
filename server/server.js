@@ -26,7 +26,7 @@ app.get("/",(req,res)=>{
     res.send("SERVER IS WORKING ");
 
 })
-const port =process.env.PORT;
+const port =9000;
 app.listen(port,()=>{
     console.log("server is listining on ",`http://localhost:${port}`);
 
